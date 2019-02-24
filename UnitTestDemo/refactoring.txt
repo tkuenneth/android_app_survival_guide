@@ -1,0 +1,9 @@
+- Create a new class Game
+- Define an enum Difficulty and instance variable Difficulty
+- Refactor getMax(): Change signature (pass difficulty, change access modifier to public, move to Game)
+- Move instance variable number to Game
+- Move randomNumber() to Game but remove call to setText()
+- Create new public methods setup(difficulty) and peek() -> number
+- Create an instance variable Game and instantiate in onCreate()
+- Create new method setup that obtains difficulty and calls game.setup
+- Change invocations of randomNumber() to setup()
