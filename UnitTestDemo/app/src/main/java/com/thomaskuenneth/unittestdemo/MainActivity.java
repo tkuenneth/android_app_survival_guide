@@ -7,38 +7,33 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-/**
- * This class demonstrates how a lot of current Android
- * apps might look like. There is a lot of room for refactoring.
- * For example, business logic should not be mixed with ui
- * logic. Also, there are no tests.
- */
 public class MainActivity extends AppCompatActivity {
 
     private EditText editTextGuess;
     private TextView textViewMessage;
     private RadioGroup difficulty;
-    private int number;
+    private Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        game = new Game();
 
         difficulty = findViewById(R.id.difficulty);
         difficulty.check(R.id.button_easy);
-        difficulty.setOnCheckedChangeListener((group, checkedId) -> randomNumber());
+        difficulty.setOnCheckedChangeListener((group, checkedId) -> setup());
         editTextGuess = findViewById(R.id.edittext_guess);
         textViewMessage = findViewById(R.id.textview_message);
 
-        randomNumber();
+        setup();
     }
 
     public void handleGuess(View v) {
         int guess = Integer.parseInt(editTextGuess.getText().toString());
-        boolean correct = guess(guess);
+        boolean correct = game.guess(guess);
         if (correct) {
-            randomNumber();
+            setup();
             textViewMessage.setText(R.string.correct);
         } else {
             textViewMessage.setText(R.string.wrong);
@@ -46,28 +41,18 @@ public class MainActivity extends AppCompatActivity {
         editTextGuess.setText("");
     }
 
-    private void randomNumber() {
-        number = 1 + (int) (Math.random() * getMax());
-        textViewMessage.setText(R.string.guess_a_number);
-    }
-
-    private float getMax() {
-        float max;
+    private void setup() {
         switch (difficulty.getCheckedRadioButtonId()) {
             case R.id.button_easy:
-                max = 3f;
+                game.setup(Game.Difficulty.EASY);
                 break;
             case R.id.button_medium:
-                max = 5f;
+                game.setup(Game.Difficulty.MEDIUM);
                 break;
-            default:
-                max = 10f;
+            case R.id.button_hard:
+                game.setup(Game.Difficulty.HARD);
                 break;
         }
-        return max;
-    }
-
-    private boolean guess(int guess) {
-        return number == guess;
+        textViewMessage.setText(R.string.guess_a_number);
     }
 }
