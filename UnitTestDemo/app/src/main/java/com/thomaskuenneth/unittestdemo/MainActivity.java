@@ -7,6 +7,12 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+/**
+ * This class demonstrates how a lot of current Android
+ * apps might look like. There is a lot of room for refactoring.
+ * For example, business logic should not be mixed with ui
+ * logic. Also, there are no tests.
+ */
 public class MainActivity extends AppCompatActivity {
 
     private EditText editTextGuess;
