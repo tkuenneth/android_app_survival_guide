@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">UnitTestDemo</string>
+    <string name="guess">Guess</string>
+    <string name="guess_a_number">Please guess a number</string>
+    <string name="hint_guess">A number</string>
+    <string name="easy">Easy</string>
+    <string name="medium">Medium</string>
+    <string name="hard">Hard</string>
+    <string name="wrong">Sorry. Please try again.</string>
+    <string name="correct">Great. Here\'s your next one.</string>
+</resources>
