@@ -30,6 +30,10 @@ public class Game {
         return max;
     }
 
+    public int peek() {
+        return number;
+    }
+
     public boolean guess(int guess) {
         return number == guess;
     }
