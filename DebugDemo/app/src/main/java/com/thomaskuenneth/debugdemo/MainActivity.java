@@ -41,5 +41,23 @@ public class MainActivity extends AppCompatActivity {
         } catch (NullPointerException e) {
             Log.wtf(TAG, "What a terrible failure ;-)", e);
         }
+
+        // ordinaryBreakpointTest();
+        for (int i = 0; i < 1000; i++) {
+            exceptionBreakpointTest();
+        }
+    }
+
+    void ordinaryBreakpointTest() {
+        for (int i = 0; i < 1000; i++) {
+            int j = i * i;
+            Log.i(TAG, "j = " + j);
+        }
+    }
+
+    void exceptionBreakpointTest() {
+        int i = (int) (Math.random() * 10f);
+        int j = 100 / i;
+        Log.i(TAG, "100 / " + i + " = " + j);
     }
 }
