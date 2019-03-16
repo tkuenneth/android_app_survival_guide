@@ -33,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
         TextView apiLevel = findViewById(R.id.apiLevel);
         apiLevel.setText(String.format(Locale.US, "API-Level %d",
                 Build.VERSION.SDK_INT));
-
-        Magnifier m = new Magnifier(null);    }
+    }
 
     private void setImage() {
         AssetManager am = getAssets();
