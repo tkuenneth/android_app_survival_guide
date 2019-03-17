@@ -1,16 +1,35 @@
 package com.thomaskuenneth.unittestdemo;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class GameTest {
 
-    private Game game;
+    private static Game game;
+
+    @BeforeClass
+    public static void initialize() {
+        System.out.println("Setup game");
+        game = new Game();
+    }
+
+    @AfterClass
+    public static void finished() {
+        System.out.println("Done");
+    }
 
     @Before
-    public void initialize() {
-        game = new Game();
+    public void begin() {
+        System.out.println("Begin");
+    }
+
+    @After
+    public void end() {
+        System.out.println("End");
     }
 
     @Test
