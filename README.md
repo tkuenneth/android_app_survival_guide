@@ -2,6 +2,10 @@
 
 This repo contains sample apps and slides for my talks and workshops about Android development.
 
+## AndroidVersionDemo
+
+This app deliberately uses a feature being present only in Android P and later. Switch to branch androidversiondemo_api26 to see one way of supporting different versions.
+
 ## UnitTestDemo
 
 This app demonstrates how a lot of current apps might look like (caution: not how they should ;-)).
