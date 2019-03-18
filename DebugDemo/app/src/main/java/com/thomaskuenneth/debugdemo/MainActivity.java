@@ -3,43 +3,70 @@ package com.thomaskuenneth.debugdemo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private WatchPointDemo demo;
+    private boolean demoStarted;
+
+    Button buttonStartStop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int Factorial = 1;
-        System.out.println("0! = " + Factorial);
-        for (int i = 1; i <= 5; i++) {
-            Factorial = i * Factorial;
-            System.out.println(i + "! = " + Factorial);
+        buttonStartStop = findViewById(R.id.buttonStartStop);
+        demo = new WatchPointDemo();
+        demoStarted = false;
+        updateStartStopButton();
+
+        final TextView textViewResult = findViewById(R.id.textViewResult);
+        final EditText editTextFactorial = findViewById(R.id.editTextFactorial);
+        editTextFactorial.setOnEditorActionListener((view, actionId, event) -> {
+            int f = Integer.parseInt(editTextFactorial.getText().toString());
+            textViewResult.setText(Integer.toString(Factorial.factorial(f)));
+            return true;
+        });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopDemo();
+    }
+
+    public void handleButtonLogClicked(View v) {
+        LogDemo.logLevelDemo();
+        LogDemo.isLoggableDemo();
+        LogDemo.wtfDemo();
+    }
+
+    public void handleButtonStartStopClicked(View v) {
+        if (demoStarted) {
+            stopDemo();
+        } else {
+            startDemo();
         }
+        updateStartStopButton();
+    }
 
-        Log.d(TAG, "debug");
-        Log.v(TAG, "verbose");
-        Log.i(TAG, "info");
-        Log.w(TAG, "warn");
-        Log.e(TAG, "error");
+    private void updateStartStopButton() {
+        buttonStartStop.setText(demoStarted ? R.string.stop : R.string.start);
+    }
 
-        Log.println(Log.ASSERT, TAG, "assert");
+    private void startDemo() {
+        demo.start();
+        demoStarted = true;
+    }
 
-        Log.i(TAG, "VERBOSE: " + Boolean.toString(Log.isLoggable(TAG, Log.VERBOSE)));
-        Log.i(TAG, "DEBUG: " + Boolean.toString(Log.isLoggable(TAG, Log.DEBUG)));
-        Log.i(TAG, "INFO: " + Boolean.toString(Log.isLoggable(TAG, Log.INFO)));
-        Log.i(TAG, "WARN: " + Boolean.toString(Log.isLoggable(TAG, Log.WARN)));
-        Log.i(TAG, "ERROR: " + Boolean.toString(Log.isLoggable(TAG, Log.ERROR)));
-        Log.i(TAG, "ASSERT: " + Boolean.toString(Log.isLoggable(TAG, Log.ASSERT)));
-
-        String s = null;
-        try {
-            int l = s.length();
-        } catch (NullPointerException e) {
-            Log.wtf(TAG, "What a terrible failure ;-)", e);
-        }
+    private void stopDemo() {
+        demo.stop();
+        demoStarted = false;
     }
 }

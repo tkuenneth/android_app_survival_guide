@@ -12,3 +12,7 @@ This app demonstrates how a lot of current apps might look like (caution: not ho
 For example, the version on master mixes core business logic and ui code. Also, there are no tests.
 Branch unittestdemo_improved has, as the name suggests, some improvements. The aim of this branch is
 not to be perfect but to provide a start.
+
+## DebugDemo
+
+This app shows various aspects of logging, debugging and profiling.

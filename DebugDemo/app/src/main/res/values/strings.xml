@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DebugDemo</string>
+    <string name="log">Logging</string>
+    <string name="hintFactorial">a number</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
 </resources>
