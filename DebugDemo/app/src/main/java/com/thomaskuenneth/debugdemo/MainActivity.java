@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         editTextFactorial.setOnEditorActionListener((view, actionId, event) -> {
             int f = Integer.parseInt(editTextFactorial.getText().toString());
             textViewResult.setText(Integer.toString(Factorial.factorial(f)));
+            // textViewResult.setText(Integer.toString(Factorial.factorialRecursive(f)));
             return true;
         });
     }
