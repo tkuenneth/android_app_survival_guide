@@ -1,3 +1,6 @@
+UIThreadDemo/app/release/**
+UIThreadDemo/app/debug/**
+
 **/.DS_Store
 
 # Built application files
