@@ -25,6 +25,13 @@ public class UIThreadDemo extends Activity {
             if (checkbox.isChecked()) {
                 try {
                     Thread.sleep(3500);
+                    if (Math.random() > .5) {
+                        String s = null;
+                        int l = s.length();
+                        if (l == 0) {
+                            Log.wtf(TAG, "Should never be printed ;-)");
+                        }
+                    }
                 } catch (InterruptedException e) {
                     Log.e(TAG, "sleep()", e);
                 }
