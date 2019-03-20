@@ -19,4 +19,4 @@ This app shows various aspects of logging, debugging and profiling.
 
 ## UIThreadDemo
 
-This app shows how to mess up with the UI thread. It is used to demo how ANRs and exceptions are reported in the Play Console.
+This app shows how to mess with the UI thread. That is, how an app behaves badly.

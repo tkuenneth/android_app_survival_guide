@@ -11,6 +11,8 @@ public class UIThreadDemo extends Activity {
 
     public static final String TAG = UIThreadDemo.class.getSimpleName();
 
+    private boolean running;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,22 +25,33 @@ public class UIThreadDemo extends Activity {
         button.setOnClickListener(v -> {
             tv.setText(UIThreadDemo.this.getString(R.string.begin));
             if (checkbox.isChecked()) {
-                try {
-                    Thread.sleep(3500);
-                    if (Math.random() > .5) {
-                        String s = null;
-                        int l = s.length();
-                        if (l == 0) {
-                            Log.wtf(TAG, "Should never be printed ;-)");
-                        }
-                    }
-                } catch (InterruptedException e) {
-                    Log.e(TAG, "sleep()", e);
-                }
+                sleep();
             } else {
-                while (true) ;
+                while (running) {
+                    sleep();
+                }
             }
             tv.setText(UIThreadDemo.this.getString(R.string.end));
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        running = true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        running = false;
+    }
+
+    private void sleep() {
+        try {
+            Thread.sleep(3500);
+        } catch (InterruptedException e) {
+            Log.e(TAG, "sleep()", e);
+        }
     }
 }
