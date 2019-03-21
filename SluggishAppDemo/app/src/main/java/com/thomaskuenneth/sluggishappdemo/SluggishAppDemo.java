@@ -2,7 +2,6 @@ package com.thomaskuenneth.sluggishappdemo;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -10,8 +9,6 @@ import android.widget.TextView;
 public class SluggishAppDemo extends Activity {
 
     public static final String TAG = SluggishAppDemo.class.getSimpleName();
-
-    private boolean running;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,33 +22,11 @@ public class SluggishAppDemo extends Activity {
         button.setOnClickListener(v -> {
             tv.setText(SluggishAppDemo.this.getString(R.string.begin));
             if (checkbox.isChecked()) {
-                sleep();
+                BusinessLogic.doComplexStuff();
             } else {
-                while (running) {
-                    sleep();
-                }
+                BusinessLogic.doVeryComplexStuff();
             }
             tv.setText(SluggishAppDemo.this.getString(R.string.end));
         });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        running = true;
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        running = false;
-    }
-
-    private void sleep() {
-        try {
-            Thread.sleep(3500);
-        } catch (InterruptedException e) {
-            Log.e(TAG, "sleep()", e);
-        }
     }
 }
