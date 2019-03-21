@@ -24,3 +24,7 @@ As the name suggests, this app behaves badly. ;-)
 ## ServiceDemo
 
 Shows a started service. Note that the version on master is not optimized for Android 8 and later. Switch to branch servicedemo_improved to see how a foreground service is implemented.
+
+## JobSchedulerDemo
+
+Shows how to implement periodic background jobs.
