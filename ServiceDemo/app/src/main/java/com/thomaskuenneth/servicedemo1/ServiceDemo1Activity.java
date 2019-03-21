@@ -7,6 +7,10 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
+/**
+ * Since Android Pie (API level 28) permission android.permission.FOREGROUND_SERVICE
+ * is needed.
+ */
 public class ServiceDemo1Activity extends Activity {
 
     private static final int RQ_CALL_LOG = 123;
@@ -42,7 +46,7 @@ public class ServiceDemo1Activity extends Activity {
 
     private void startServiceAndFinish() {
         Intent intent = new Intent(this, DemoService.class);
-        startService(intent);
+        startForegroundService(intent);
         finish();
     }
 }

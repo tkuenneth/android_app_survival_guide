@@ -1,5 +1,8 @@
 package com.thomaskuenneth.servicedemo1;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
 import android.database.ContentObserver;
@@ -48,6 +51,25 @@ public class DemoService extends Service {
                 }
             }
         }).start();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        final String channelId = "channelId_1234";
+        final NotificationChannel channel = new NotificationChannel(channelId,
+                getString(R.string.app_name),
+                NotificationManager.IMPORTANCE_DEFAULT);
+        NotificationManager nm = getSystemService(NotificationManager.class);
+        if (nm != null) {
+            nm.createNotificationChannel(channel);
+            Notification.Builder b = new Notification.Builder(this,
+                    channelId);
+            b.setSmallIcon(R.drawable.ic_launcher)
+                    .setContentTitle(getString(R.string.app_name))
+                    .setContentText(getString(R.string.app_name));
+            startForeground(0x1234, b.build());
+        }
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
