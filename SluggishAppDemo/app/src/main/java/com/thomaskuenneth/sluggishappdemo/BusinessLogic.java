@@ -1,11 +1,14 @@
 package com.thomaskuenneth.sluggishappdemo;
 
-import android.util.Log;
+import java.util.HashMap;
+import java.util.Map;
 
 class BusinessLogic {
 
+    private static Map<Double, byte []> map = new HashMap<>();
+
     static void doComplexStuff() {
-        sleep();
+        compute();
     }
 
     static void doVeryComplexStuff() {
@@ -14,11 +17,17 @@ class BusinessLogic {
         }
     }
 
-    private static void sleep() {
-        try {
-            Thread.sleep(3500);
-        } catch (InterruptedException e) {
-            Log.e(SluggishAppDemo.TAG, "sleep()", e);
+    private static void compute() {
+        double f = Math.random();
+        long current = System.currentTimeMillis();
+        while (System.currentTimeMillis() - current < 3500) {
+            f *= Math.random();
+            Double key = new Double(f);
+            byte [] bytes = new byte[65536];
+            for (int i = 0; i < bytes.length; i++) {
+                bytes[i] = (byte) (Math.random() * 256f);
+            }
+            map.put(key, bytes);
         }
     }
 }
