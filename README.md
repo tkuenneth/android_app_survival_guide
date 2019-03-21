@@ -17,6 +17,6 @@ not to be perfect but to provide a start.
 
 This app shows various aspects of logging, debugging and profiling.
 
-## UIThreadDemo
+## SluggishAppDemo
 
-This app shows how to mess with the UI thread. That is, how an app behaves badly.
+As the name suggests, this app behaves badly. ;-)

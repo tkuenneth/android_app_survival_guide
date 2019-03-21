@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        applicationId "com.thomaskuenneth.uithreaddemo"
+        applicationId "com.thomaskuenneth.sluggishappdemo"
         minSdkVersion 28
         targetSdkVersion 28
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">UIThreadDemo</string>
+    <string name="app_name">Sluggish App</string>
     <string name="button">Berechnung starten</string>
     <string name="checkbox">Berechnung mit sleep()</string>
     <string name="begin">Berechnung hat begonnen</string>

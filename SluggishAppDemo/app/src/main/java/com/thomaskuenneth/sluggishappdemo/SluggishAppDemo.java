@@ -1,4 +1,4 @@
-package com.thomaskuenneth.uithreaddemo;
+package com.thomaskuenneth.sluggishappdemo;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,9 +7,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-public class UIThreadDemo extends Activity {
+public class SluggishAppDemo extends Activity {
 
-    public static final String TAG = UIThreadDemo.class.getSimpleName();
+    public static final String TAG = SluggishAppDemo.class.getSimpleName();
 
     private boolean running;
 
@@ -23,7 +23,7 @@ public class UIThreadDemo extends Activity {
         checkbox.setChecked(true);
         final Button button = findViewById(R.id.button);
         button.setOnClickListener(v -> {
-            tv.setText(UIThreadDemo.this.getString(R.string.begin));
+            tv.setText(SluggishAppDemo.this.getString(R.string.begin));
             if (checkbox.isChecked()) {
                 sleep();
             } else {
@@ -31,7 +31,7 @@ public class UIThreadDemo extends Activity {
                     sleep();
                 }
             }
-            tv.setText(UIThreadDemo.this.getString(R.string.end));
+            tv.setText(SluggishAppDemo.this.getString(R.string.end));
         });
     }
 
